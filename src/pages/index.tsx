@@ -19,11 +19,21 @@ export default function Home() {
         flexDir="column"
       >
         <Stack spacing={6}>
-          <Input label="E-mail" type="email" name="email" placeholder="john.doe@gmail.com" />
-          <Input label="Senha" type="password" name="password" placeholder="****" />
+          <Input
+            label="E-mail"
+            type="email"
+            name="email"
+            placeholder="john.doe@gmail.com"
+          />
+          <Input
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="****"
+          />
         </Stack>
 
-        <Button type="submit" mt="6" colorScheme="pink">Entrar</Button>
+        <Button type="submit" mt="6" colorScheme="pink">Sign in</Button>
 
       </Flex>
     </Flex>
