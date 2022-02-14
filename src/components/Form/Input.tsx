@@ -1,11 +1,11 @@
 import { Input as ChakraInput, FormControl, FormLabel, InputProps as ChakraInputProps } from '@chakra-ui/react'
 
-interface Props extends ChakraInputProps {
+interface InputProps extends ChakraInputProps {
   name: string;
   label?: string;
 }
 
-export function Input({ name, label, ...rest }: Props) {
+export function Input({ name, label, ...rest }: InputProps) {
   return (
     <FormControl>
       {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
