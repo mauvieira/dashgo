@@ -1,14 +1,14 @@
-import { Button as ChakraButton, ButtonProps as ChakraButtonProps } from "@chakra-ui/react";
+import { Button, ButtonProps as ChakraButtonProps } from "@chakra-ui/react";
 
-interface ButtonProps extends ChakraButtonProps {
+interface PaginationItemProps extends ChakraButtonProps {
   number: number;
   isCurrent?: boolean;
 }
 
-export function Button({ number, isCurrent = false }: ButtonProps) {
+export function PaginationItem({ number, isCurrent = false }: PaginationItemProps) {
   if (isCurrent) {
     return (
-      <ChakraButton
+      <Button
         colorScheme="pink"
         size="sm"
         fontSize="xs"
@@ -20,12 +20,12 @@ export function Button({ number, isCurrent = false }: ButtonProps) {
         }}
       >
         {number}
-      </ChakraButton>
+      </Button>
     )
   }
 
   return (
-    <ChakraButton
+    <Button
       size="sm"
       fontSize="xs"
       width="4"
@@ -35,6 +35,6 @@ export function Button({ number, isCurrent = false }: ButtonProps) {
       }}
     >
       {number}
-    </ChakraButton>
+    </Button>
   )
 }
