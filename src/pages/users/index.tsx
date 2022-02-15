@@ -14,8 +14,8 @@ import {
   Text,
   useBreakpointValue
 } from "@chakra-ui/react"
-import Link from "next/link"
 import { RiAddLine, RiPencilLine } from "react-icons/ri"
+import { ActiveLink } from "../../components/ActiveLink"
 import { Header } from "../../components/Header"
 import { Pagination } from "../../components/Pagination"
 import { Sidebar } from "../../components/Sidebar"
@@ -41,7 +41,7 @@ export default function UserList() {
               Usuários
             </Heading>
 
-            <Link href="/users/create" passHref>
+            <ActiveLink href="/users/create" passHref>
               <Button
                 as="a"
                 colorScheme="pink"
@@ -51,7 +51,7 @@ export default function UserList() {
               >
                 Criar novo
               </Button>
-            </Link>
+            </ActiveLink>
           </Flex>
 
           <Table colorScheme="whiteAlpha">
