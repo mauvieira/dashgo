@@ -1,15 +1,26 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Flex, Stack, Button } from '@chakra-ui/react'
-import { Input } from '../components/Form/Input';
+import { SubmitHandler, useForm } from "react-hook-form"
+import { Flex, Stack, Button } from "@chakra-ui/react"
+import { Input } from "../components/Form/Input"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup";
 
 type SignInFormData = {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
+
+const signInFormSchema = yup.object({
+  email: yup.string()
+    .required("E-mail obrigatório")
+    .email("Insira um e-mail válido"),
+  password: yup.string().required("Senha obrigatória")
+}).required()
 
 export default function Home() {
 
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(signInFormSchema)
+  })
 
   const handleSignIn: SubmitHandler<SignInFormData> = (values) => {
     console.log(values)
@@ -38,14 +49,16 @@ export default function Home() {
             type="email"
             name="email"
             placeholder="john.doe@gmail.com"
-            {...register("email", { required: true })}
+            error={errors.email}
+            {...register("email")}
           />
           <Input
             label="Password"
             type="password"
             name="password"
             placeholder="****"
-            {...register("password", { required: true })}
+            error={errors.password}
+            {...register("password")}
           />
         </Stack>
 
