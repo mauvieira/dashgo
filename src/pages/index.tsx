@@ -18,11 +18,12 @@ const signInFormSchema = yup.object({
 
 export default function Home() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(signInFormSchema)
   })
 
-  const handleSignIn: SubmitHandler<SignInFormData> = (values) => {
+  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
+    await new Promise(resolve => setTimeout(resolve, 2000))
     console.log(values)
   }
 
@@ -62,8 +63,13 @@ export default function Home() {
           />
         </Stack>
 
-        <Button type="submit" mt="6" colorScheme="pink">Sign in</Button>
-
+        <Button
+          type="submit"
+          mt="6"
+          colorScheme="pink"
+          isLoading={isSubmitting}>
+          Sign in
+        </Button>
       </Flex>
     </Flex>
   )
