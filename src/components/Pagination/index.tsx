@@ -7,7 +7,7 @@ export function Pagination() {
       spacing="8"
       justify="space-between"
       align="center"
-      direction="row"
+      direction={["column", "row"]}
       mt="8"
     >
       <Box>
