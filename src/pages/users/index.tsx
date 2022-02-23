@@ -21,6 +21,7 @@ import { ActiveLink } from "../../components/ActiveLink"
 import { Header } from "../../components/Header"
 import { Pagination } from "../../components/Pagination"
 import { Sidebar } from "../../components/Sidebar"
+import { api } from "../../services/api"
 
 type User = {
   id: string;
@@ -32,8 +33,7 @@ type User = {
 export default function UserList() {
 
   const { data: users, isLoading, isFetching, error } = useQuery('users', async () => {
-    const response = await fetch('/api/users');
-    const data = await response.json();
+    const { data } = await api.get('/users');
 
     const users = data.users.map(({ id, name, email, createdAt }: User) => ({
       id,
