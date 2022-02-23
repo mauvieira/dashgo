@@ -31,7 +31,7 @@ type User = {
 
 export default function UserList() {
 
-  const { data: users, isLoading, error } = useQuery('users', async () => {
+  const { data: users, isLoading, isFetching, error } = useQuery('users', async () => {
     const response = await fetch('/api/users');
     const data = await response.json();
 
@@ -68,6 +68,10 @@ export default function UserList() {
 
             <Heading size="lg" fontWeight="normal">
               Usuários
+
+              {!isLoading && isFetching && (
+                <Spinner size="sm" color="gray.500" ml="4" />
+              )}
             </Heading>
 
             <ActiveLink href="/users/create" passHref>
