@@ -8,7 +8,7 @@ type User = {
   createdAt: string;
 }
 
-async function getUsers(): Promise<User[]> {
+export async function getUsers(): Promise<User[]> {
   const { data } = await api.get('/users');
 
   const users = data.users.map(({ id, name, email, createdAt }: User) => ({
