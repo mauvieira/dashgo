@@ -112,7 +112,11 @@ export default function UserList() {
                   ))}
                 </Tbody>
               </Table>
-              <Pagination />
+              <Pagination
+                totalCountOfRegisters={200}
+                currentPage={5}
+                onChangePage={() => console.log('page')}
+              />
             </>
           )}
         </Box>
