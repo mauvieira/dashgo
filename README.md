@@ -46,8 +46,6 @@ To clone and run this application, you'll need [Git](https://git-scm.com), [Node
   # Go into the repository
   $ cd dashgo
 
-  # Add environment variables
-
   # Install dependencies
   $ yarn install
 
