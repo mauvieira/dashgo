@@ -12,10 +12,10 @@ export function SidebarNav() {
         <NavLink href="/users" icon={RiContactsLine}>Usuários</NavLink>
       </NavSection>
 
-      <NavSection title="AUTOMAÇÃO">
+      {/* <NavSection title="AUTOMAÇÃO">
         <NavLink href="/forms" icon={RiInputMethodLine}>Formulários</NavLink>
         <NavLink href="/automation" icon={RiGitMergeLine}>Automação</NavLink>
-      </NavSection>
+      </NavSection> */}
 
     </Stack>
   )
