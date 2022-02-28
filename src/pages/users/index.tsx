@@ -13,7 +13,8 @@ import {
   Tr,
   Text,
   useBreakpointValue,
-  Spinner
+  Spinner,
+  Link
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { RiAddLine, RiPencilLine } from "react-icons/ri"
@@ -22,17 +23,28 @@ import { Header } from "../../components/Header"
 import { Pagination } from "../../components/Pagination"
 import { Sidebar } from "../../components/Sidebar"
 import { useUsers } from "../../hooks/useUsers"
+import { api } from "../../services/api"
+import { queryClient } from "../../services/queryClient"
 
 export default function UserList() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data: { users, totalCount }, isLoading, isFetching, error } = useUsers(currentPage);
+  const { data, isLoading, isFetching, error } = useUsers(currentPage);
 
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   })
+
+  const handlePrefetchUser = async (userId: string) => {
+    await queryClient.prefetchQuery(['user', userId], async () => {
+      const { data } = await api.get(`/users/${userId}`);
+      return data;
+    }, {
+      staleTime: 1000 * 60 * 10  // 10 minutes
+    })
+  }
 
   return (
     <Box>
@@ -89,12 +101,18 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {users.map(({ id, name, email, createdAt }) => (
+                  {data.users.map(({ id, name, email, createdAt }) => (
                     <Tr key={id}>
                       {isWideVersion && <Td px={["4", "4", "6"]}><Checkbox colorScheme="pink" /></Td>}
                       <Td>
                         <Box>
-                          <Text fontWeight="bold">{name}</Text>
+                          <Link
+                            fontWeight="bold"
+                            color="purple.400"
+                            onMouseEnter={() => handlePrefetchUser(id)}
+                          >
+                            {name}
+                          </Link>
                           <Text fontSize="sm" color="gray.300">{email}</Text>
                         </Box>
                       </Td>
@@ -116,7 +134,7 @@ export default function UserList() {
                 </Tbody>
               </Table>
               <Pagination
-                totalCountOfRegisters={totalCount}
+                totalCountOfRegisters={data.totalCount}
                 currentPage={currentPage}
                 onChangePage={setCurrentPage}
               />
