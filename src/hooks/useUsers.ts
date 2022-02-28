@@ -40,8 +40,6 @@ export async function getUsers(currentPage: number = 1): Promise<GetUsersRespons
     createdAt: formatDate(created_at)
   }))
 
-  console.log(data);
-
   return { users, totalCount };
 
 }
