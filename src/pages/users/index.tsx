@@ -16,13 +16,14 @@ import {
   Spinner,
   Link
 } from "@chakra-ui/react"
+import { GetServerSideProps } from "next"
 import { useState } from "react"
 import { RiAddLine, RiPencilLine } from "react-icons/ri"
 import { ActiveLink } from "../../components/ActiveLink"
 import { Header } from "../../components/Header"
 import { Pagination } from "../../components/Pagination"
 import { Sidebar } from "../../components/Sidebar"
-import { useUsers } from "../../hooks/useUsers"
+import { getUsers, useUsers } from "../../hooks/useUsers"
 import { api } from "../../services/api"
 import { queryClient } from "../../services/queryClient"
 
