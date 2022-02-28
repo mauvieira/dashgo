@@ -59,7 +59,7 @@ export default function UserList() {
           <Flex mb="8" justify="space-between" align="center">
 
             <Heading size="lg" fontWeight="normal">
-              Usuários
+              Users
 
               {!isLoading && isFetching && (
                 <Spinner size="sm" color="gray.500" ml="4" />
@@ -74,7 +74,7 @@ export default function UserList() {
                 fontSize="sm"
                 leftIcon={<Icon as={RiAddLine} fontSize="20" />}
               >
-                Criar novo
+                Add new
               </Button>
             </ActiveLink>
           </Flex>
@@ -97,8 +97,8 @@ export default function UserList() {
                         <Checkbox colorScheme="pink" />
                       </Th>
                     }
-                    <Th>Usuário</Th>
-                    {isWideVersion && <Th>Data de cadastro</Th>}
+                    <Th>User</Th>
+                    {isWideVersion && <Th>Created at</Th>}
                     {isWideVersion && <Th />}
                   </Tr>
                 </Thead>
@@ -127,7 +127,7 @@ export default function UserList() {
                             colorScheme="purple"
                             leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                           >
-                            Editar
+                            Edit
                           </Button>
                         </Td>
                       }

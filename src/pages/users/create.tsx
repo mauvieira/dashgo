@@ -21,17 +21,17 @@ type CreateUserFormData = {
 
 const createUserFormSchema = yup.object({
   name: yup.string()
-    .required("Nome obrigatório"),
+    .required("Name required"),
   email: yup.string()
-    .required("E-mail obrigatório")
-    .email("Insira um e-mail válido"),
+    .required("E-mail required")
+    .email("Insert an valid e-mail"),
   password: yup.string()
-    .required("Senha obrigatória")
-    .min(6, "Mínimo 6 caracteres"),
+    .required("Password required")
+    .min(6, "Minimum 6 character"),
   password_confirmation: yup.string()
     .oneOf([
       null, yup.ref("password")
-    ], "As senhas devem ser iguais")
+    ], "Passwords must be the same")
 }).required()
 
 export default function CreateUser() {
@@ -80,7 +80,7 @@ export default function CreateUser() {
         >
 
           <Heading size="lg" fontWeight="normal">
-            Criar usuário
+            Create new user
           </Heading>
 
           <Divider my="6" borderColor="gray.700" />
@@ -91,7 +91,7 @@ export default function CreateUser() {
               <Input
                 name="name"
                 type="text"
-                label="Nome completo"
+                label="Full name"
                 {...register("name")}
                 error={errors.name}
               />
@@ -108,14 +108,14 @@ export default function CreateUser() {
               <Input
                 name="password"
                 type="password"
-                label="Senha"
+                label="Password"
                 {...register("password")}
                 error={errors.password}
               />
               <Input
                 name="password_confirmation"
                 type="password"
-                label="Confirmar Senha"
+                label="Confirm Password"
                 {...register("password_confirmation")}
                 error={errors.password_confirmation}
               />
@@ -125,14 +125,14 @@ export default function CreateUser() {
             <Flex mt="8" justify="flex-end" w="100%">
               <HStack spacing="4">
                 <Link href="/users" passHref>
-                  <Button colorScheme="whiteAlpha">Cancelar</Button>
+                  <Button colorScheme="whiteAlpha">Cancel</Button>
                 </Link>
                 <Button
                   type="submit"
                   colorScheme="pink"
                   isLoading={isSubmitting}
                 >
-                  Salvar
+                  Save
                 </Button>
               </HStack>
             </Flex>
