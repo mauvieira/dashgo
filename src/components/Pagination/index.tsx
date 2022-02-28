@@ -42,7 +42,7 @@ export function Pagination({
       mt="8"
     >
       <Box>
-        <strong>0 - 10</strong> de <strong>{totalCountOfRegisters}</strong>
+        <strong>0 - 10</strong> of <strong>{totalCountOfRegisters}</strong>
       </Box>
       <Stack direction="row" spacing="2">
 
