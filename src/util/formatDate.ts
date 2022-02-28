@@ -4,4 +4,4 @@ export function formatDate(date: string) {
     month: 'long',
     year: 'numeric'
   })
-};
+}
