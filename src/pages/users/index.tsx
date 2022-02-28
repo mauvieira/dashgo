@@ -23,6 +23,7 @@ import { ActiveLink } from "../../components/ActiveLink"
 import { Header } from "../../components/Header"
 import { Pagination } from "../../components/Pagination"
 import { Sidebar } from "../../components/Sidebar"
+import { TEN_MINUTES } from "../../constants"
 import { getUsers, useUsers } from "../../hooks/useUsers"
 import { api } from "../../services/api"
 import { queryClient } from "../../services/queryClient"
@@ -43,7 +44,7 @@ export default function UserList() {
       const { data } = await api.get(`/users/${userId}`);
       return data;
     }, {
-      staleTime: 1000 * 60 * 10  // 10 minutes
+      staleTime: TEN_MINUTES
     })
   }
 

@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import { TEN_MINUTES } from "../constants";
 import { api } from "../services/api";
 import { formatDate } from "../util/formatDate";
 
@@ -40,6 +41,6 @@ export async function getUsers(currentPage: number = 1): Promise<GetUsersRespons
 
 export function useUsers(currentPage: number) {
   return useQuery(['users', currentPage], () => getUsers(currentPage), {
-    staleTime: 1000 * 60 * 10  // 10 minutes
+    staleTime: TEN_MINUTES
   })
 }
