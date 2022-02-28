@@ -16,7 +16,12 @@ type GetUsersResponse = {
 }
 
 interface UsersData {
-  users: User[]
+  users: {
+    id: string;
+    name: string;
+    email: string;
+    created_at: string;
+  }[]
 }
 
 export async function getUsers(currentPage: number = 1): Promise<GetUsersResponse> {
@@ -28,12 +33,14 @@ export async function getUsers(currentPage: number = 1): Promise<GetUsersRespons
 
   const totalCount = Number(headers['x-total-count']);
 
-  const users = data.users.map(({ id, name, email, createdAt }) => ({
+  const users = data.users.map(({ id, name, email, created_at }) => ({
     id,
     name,
     email,
-    createdAt: formatDate(createdAt)
+    createdAt: formatDate(created_at)
   }))
+
+  console.log(data);
 
   return { users, totalCount };
 
