@@ -15,6 +15,7 @@ import {
   useBreakpointValue,
   Spinner
 } from "@chakra-ui/react"
+import { useState } from "react"
 import { RiAddLine, RiPencilLine } from "react-icons/ri"
 import { ActiveLink } from "../../components/ActiveLink"
 import { Header } from "../../components/Header"
@@ -24,7 +25,9 @@ import { useUsers } from "../../hooks/useUsers"
 
 export default function UserList() {
 
-  const { data: users, isLoading, isFetching, error } = useUsers();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { data: { users, totalCount }, isLoading, isFetching, error } = useUsers(currentPage);
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -113,9 +116,9 @@ export default function UserList() {
                 </Tbody>
               </Table>
               <Pagination
-                totalCountOfRegisters={200}
-                currentPage={5}
-                onChangePage={() => console.log('page')}
+                totalCountOfRegisters={totalCount}
+                currentPage={currentPage}
+                onChangePage={setCurrentPage}
               />
             </>
           )}
