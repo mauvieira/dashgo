@@ -24,7 +24,7 @@ const createUserFormSchema = yup.object({
     .required("Name required"),
   email: yup.string()
     .required("E-mail required")
-    .email("Insert an valid e-mail"),
+    .email("Insert a valid email"),
   password: yup.string()
     .required("Password required")
     .min(6, "Minimum 6 character"),

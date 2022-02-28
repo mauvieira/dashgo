@@ -76,7 +76,7 @@ export default function Dashboard() {
 
           <Box p={["6", "8"]} pb="4" bg="gray.800" borderRadius="8">
             <Text fontSize="lg" mb="4">
-              Inscritos da semana
+              Subscribers of the week
             </Text>
 
             <Chart
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
           <Box p={["6", "8"]} bg="gray.800" borderRadius="8">
             <Text fontSize="lg" mb="4">
-              Taxa de abertura
+              Open rate
             </Text>
 
             <Chart
