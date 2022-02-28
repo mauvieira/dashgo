@@ -33,8 +33,6 @@ export function Pagination({
     ? generatePagesArray(currentPage, Math.min(currentPage + siblingsCount, lastPage))
     : [];
 
-  // const numberOfPages = Math.ceil(totalCountOfRegisters / registersPerPage);
-
   return (
     <Stack
       spacing="8"
